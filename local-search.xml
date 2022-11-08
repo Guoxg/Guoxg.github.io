@@ -4,23 +4,23 @@
   
   
   <entry>
-    <title>测试文章</title>
-    <link href="/2022/11/08/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
-    <url>/2022/11/08/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</url>
+    <title>数据库常用压缩算法比较</title>
+    <link href="/2022/11/08/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95%E6%AF%94%E8%BE%83/"/>
+    <url>/2022/11/08/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95%E6%AF%94%E8%BE%83/</url>
     
-    <content type="html"><![CDATA[<p>这是一篇测试文章</p><img src="/2022/11/08/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/test.png" class="" title="图片引用方法一">]]></content>
+    <content type="html"><![CDATA[<h2 id="比较不同压缩算法trade-off"><a href="#比较不同压缩算法trade-off" class="headerlink" title="比较不同压缩算法trade off"></a>比较不同压缩算法trade off</h2><p>压缩的本质是减少IO操作，从而带来更快的读写操作。需要用CPU周期来对IO性能进行tradeoff。</p><p>但是同时还要考虑到实际应用的性能需求，如实时性、吞吐等。不同压缩算法的cost不同，因此需要综合考虑。</p>]]></content>
     
     
     <categories>
       
-      <category>想鼠</category>
+      <category>科研</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>老公</tag>
+      <tag>压缩算法</tag>
       
     </tags>
     
@@ -29,13 +29,27 @@
   
   
   <entry>
-    <title>Hello World</title>
-    <link href="/2022/11/08/hello-world/"/>
-    <url>/2022/11/08/hello-world/</url>
+    <title>Zipline论文笔记</title>
+    <link href="/2022/11/08/Zipline%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/"/>
+    <url>/2022/11/08/Zipline%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/</url>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="研究问题-amp-动机"><a href="#研究问题-amp-动机" class="headerlink" title="研究问题&amp;动机"></a>研究问题&amp;动机</h2><h2 id="压缩算法"><a href="#压缩算法" class="headerlink" title="压缩算法"></a>压缩算法</h2><h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2>]]></content>
     
     
+    <categories>
+      
+      <category>科研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>P4可编程交换机</tag>
+      
+      <tag>压缩算法</tag>
+      
+    </tags>
     
   </entry>
   
