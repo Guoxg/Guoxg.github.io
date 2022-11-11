@@ -16,29 +16,22 @@
   <meta name="author" content="Jiayi Guo">
   <meta name="keywords" content="">
   
-    <meta name="description" content="研究问题&amp;动机将开销较大的压缩和解压offload到可编程交换机（line rate），实现的压缩算法是generalized deduplication。 现有一些工作会在交换机上对数据流做on-the-fly的压缩（），但是方法是在第三层及以上，Zipline是在layer2进行压缩，可以支持更广泛的传输协议。 IoT应用一般需要处理小数据块并且因为内存限制，需要对小数据块进行压缩。标">
+    <meta name="description" content="LeetCode1704 判断字符串两段是否相等题目整体没有什么难度，使用了最简单的得到两个子串后分别计数并比较是否相等。 1234567891011121314151617181920212223242526272829303132333435363738394041class Solution &amp;#123;public:    bool halvesAreAlike(string s) &amp;#1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Zipline论文笔记">
-<meta property="og:url" content="http://example.com/2022/11/08/Zipline%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="LeetCode合集">
+<meta property="og:url" content="http://example.com/2022/11/11/LeetCode%E5%90%88%E9%9B%86/index.html">
 <meta property="og:site_name" content="gxpyzgl">
-<meta property="og:description" content="研究问题&amp;动机将开销较大的压缩和解压offload到可编程交换机（line rate），实现的压缩算法是generalized deduplication。 现有一些工作会在交换机上对数据流做on-the-fly的压缩（），但是方法是在第三层及以上，Zipline是在layer2进行压缩，可以支持更广泛的传输协议。 IoT应用一般需要处理小数据块并且因为内存限制，需要对小数据块进行压缩。标">
+<meta property="og:description" content="LeetCode1704 判断字符串两段是否相等题目整体没有什么难度，使用了最简单的得到两个子串后分别计数并比较是否相等。 1234567891011121314151617181920212223242526272829303132333435363738394041class Solution &amp;#123;public:    bool halvesAreAlike(string s) &amp;#1">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2022/11/08/Zipline%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/compression.png">
-<meta property="og:image" content="http://example.com/2022/11/08/Zipline%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/decompression.png">
-<meta property="og:image" content="http://example.com/2022/11/08/Zipline%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/real_comp_ratio.png">
-<meta property="og:image" content="http://example.com/2022/11/08/Zipline%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/compression_ratio.png">
-<meta property="og:image" content="http://example.com/2022/11/08/Zipline%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/latency.png">
-<meta property="article:published_time" content="2022-11-08T13:18:09.000Z">
-<meta property="article:modified_time" content="2022-11-11T02:36:01.553Z">
+<meta property="article:published_time" content="2022-11-11T00:25:10.000Z">
+<meta property="article:modified_time" content="2022-11-11T00:44:30.873Z">
 <meta property="article:author" content="Jiayi Guo">
-<meta property="article:tag" content="P4可编程交换机">
-<meta property="article:tag" content="压缩算法">
+<meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2022/11/08/Zipline%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/compression.png">
   
   
   
-  <title>Zipline论文笔记 - gxpyzgl</title>
+  <title>LeetCode合集 - gxpyzgl</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -220,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Zipline论文笔记"></span>
+            <span id="subtitle" data-typed-text="LeetCode合集"></span>
           
         </div>
 
@@ -231,8 +224,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-11-08 21:18" pubdate>
-          2022年11月8日 晚上
+        <time datetime="2022-11-11 08:25" pubdate>
+          2022年11月11日 早上
         </time>
       </span>
     
@@ -243,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.9k 字
+          978 字
         
       </span>
     
@@ -254,7 +247,7 @@
         
         
         
-          24 分钟
+          9 分钟
         
       </span>
     
@@ -300,94 +293,15 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Zipline论文笔记</h1>
+            <h1 style="display: none">LeetCode合集</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="研究问题-amp-动机"><a href="#研究问题-amp-动机" class="headerlink" title="研究问题&amp;动机"></a>研究问题&amp;动机</h2><p>将开销较大的压缩和解压offload到可编程交换机（line rate），实现的压缩算法是generalized deduplication。</p>
-<p>现有一些工作会在交换机上对数据流做on-the-fly的压缩（），但是方法是在第三层及以上，Zipline是在layer2进行压缩，可以支持更广泛的传输协议。</p>
-<p>IoT应用一般需要处理小数据块并且因为内存限制，需要对小数据块进行压缩。标准的压缩算法对小数据块的表现不够好，而GD对小数据块的压缩表现也很好。因此对于live vedio streaming，如果deflate这种算法需要足够量的数据才能有较好的性能，但是攒这么多数据需要时间，影响实时性。这种情况下选择GD更好。</p>
-<h2 id="压缩算法"><a href="#压缩算法" class="headerlink" title="压缩算法"></a>压缩算法</h2><img src="/2022/11/08/Zipline%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/compression.png" srcset="/img/loading.gif" lazyload class="" title="图片引用方法一">
+                <h2 id="LeetCode1704-判断字符串两段是否相等"><a href="#LeetCode1704-判断字符串两段是否相等" class="headerlink" title="LeetCode1704 判断字符串两段是否相等"></a>LeetCode1704 判断字符串两段是否相等</h2><p>题目整体没有什么难度，使用了最简单的得到两个子串后分别计数并比较是否相等。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br>public:<br>    <span class="hljs-type">bool</span> <span class="hljs-title function_">halvesAreAlike</span><span class="hljs-params">(<span class="hljs-built_in">string</span> s)</span> &#123;<br>        <span class="hljs-type">int</span> length = s.length();<br>        <span class="hljs-built_in">string</span> firstHalfStr = s.substr(<span class="hljs-number">0</span>, length / <span class="hljs-number">2</span>);<br>        <span class="hljs-built_in">string</span> SecondHalfStr = s.substr(length / <span class="hljs-number">2</span>, length / <span class="hljs-number">2</span>);<br><br>        <span class="hljs-keyword">if</span>(isTwoStrSame(firstHalfStr, SecondHalfStr)) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        &#125;<br>        <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br><br>private:<br>    <span class="hljs-type">bool</span> <span class="hljs-title function_">isTwoStrSame</span><span class="hljs-params">(<span class="hljs-built_in">string</span> str1, <span class="hljs-built_in">string</span> str2)</span> &#123;<br>        <span class="hljs-type">int</span> num1 = getNum(str1);<br>        <span class="hljs-type">int</span> num2 = getNum(str2);<br><br>        <span class="hljs-keyword">if</span>(num1 == num2) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        &#125;<br>        <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-type">int</span> <span class="hljs-title function_">getNum</span><span class="hljs-params">(<span class="hljs-built_in">string</span> str1)</span> &#123;<br>        <span class="hljs-type">int</span> i;<br>        <span class="hljs-type">int</span> len = str1.length();<br>        <span class="hljs-type">int</span> num = <span class="hljs-number">0</span>;<br><br>        <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>;i &lt; len;i++) &#123;<br>            <span class="hljs-keyword">if</span>(str1[i] == <span class="hljs-string">&#x27;a&#x27;</span> || str1[i] == <span class="hljs-string">&#x27;A&#x27;</span> || str1[i] == <span class="hljs-string">&#x27;e&#x27;</span> || str1[i] == <span class="hljs-string">&#x27;E&#x27;</span> || str1[i] == <span class="hljs-string">&#x27;i&#x27;</span> || str1[i] == <span class="hljs-string">&#x27;I&#x27;</span> || str1[i] == <span class="hljs-string">&#x27;o&#x27;</span> || str1[i] == <span class="hljs-string">&#x27;O&#x27;</span> || str1[i] == <span class="hljs-string">&#x27;u&#x27;</span> || str1[i] == <span class="hljs-string">&#x27;U&#x27;</span>) &#123;<br>                num += <span class="hljs-number">1</span>;<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-keyword">return</span> num;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
-<p>上图给出了压缩过程。</p>
-<ol>
-<li><p>接收到一个网络报文，包含数据payload B，长度为n个比特</p>
-</li>
-<li><p>使用Hamming decoder（会映射到Tofino内置的CRC模块，计算出来的结果是相同的）计算出一个m个比特长度的syndrome</p>
-</li>
-<li><p>用计算出的syndrome查表，得到一个对应长度为n的mask f</p>
-</li>
-<li><p>用查出的f与原本的数据按位异或，得到新的长度为n的b’</p>
-</li>
-<li><p>取b’最右的k位形成basis m</p>
-</li>
-<li><p>用m查basis-ID的表，看计算出来的basis是不是已经有一个更短的ID可以替换（从而达到压缩的目的）</p>
-</li>
-<li><p>如果表中用basis m能得到一个更短的ID，将包变成ID+syndrome；如果表中查不到对应的basis m，将包变成basis+syndrome</p>
-</li>
-</ol>
-<p>（一开始不是很了解syndrome，参考了 <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=z89uW4eCRx0">https://www.youtube.com/watch?v=z89uW4eCRx0</a> 这个视频。）</p>
-<img src="/2022/11/08/Zipline%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/decompression.png" srcset="/img/loading.gif" lazyload class="" title="图片引用方法一">
-
-<p>同样，类似给出解压过程。</p>
-<ol>
-<li><p>接收到一个压缩后的网络报文（如果收到的包不是压缩的，即是basis+syndrome的类型，直接从步骤3开始），包含一个长度为t的ID和长度为m的syndrome</p>
-</li>
-<li><p>接收方也要有一个ID-basis表，与压缩方需要是一致的</p>
-</li>
-<li><p>查出对应的basis并且zero pad到原来的长度n比特（m+k&#x3D;n）</p>
-</li>
-<li><p>将n比特的pad后的basis输入CRC generator，得到长度m比特的parity bits p（得到之前truncated的数据）</p>
-</li>
-<li><p>根据收到的syndrome查表，得到对应长度为n的mask f。</p>
-</li>
-<li><p>用parity和basis组成长度为n的串，与f进行按位异或</p>
-</li>
-<li><p>得到原始数据b</p>
-</li>
-</ol>
-<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><p>定义了三种类型的包：</p>
-<ul>
-<li>regular但unprocessed</li>
-<li>processed但uncompressed</li>
-<li>processed且compressed</li>
-</ul>
-<p>第一种可以是交换机收到的任意Ethernet包，并且将1作为输入，后续会转化成2或者3（如果计算出的basis有对应的更短ID）。</p>
-<p>ID有限，但basis会有很多，所以使用<strong>LRU的回收机制</strong>。</p>
-<p>syndrome look up table是一个match action table，里面的表项都是预先计算好并且不会改变的。</p>
-<p>一种为basis选择对应ID的方法是使用cryptographic hash，但是密码散列函数在P4交换机上没有办法一轮完成。所以让控制平面来管理id的分配，当basis查表不存在时，通过digests发送到控制面，如果还有未使用的id，直接分配给该basis；如果id都使用了，通过LRU回收最近没有使用的ID。（如何保证还能正常解压？）TNA可以对表项添加ttl。需要先给目的交换机增加反过来的ID-basis表项，然后再给源交换机添加basis-ID表项。</p>
-<p>实现的时候还需要考虑Tofino具体架构的限制，因为Tofino是为了对header自定义处理和routing而设计的，所以需要考虑到如下几个问题。</p>
-<ul>
-<li>Tofino架构中要求header必须是字节对齐的，但Hamming Code并不是字节对齐的，需要我们进行zero padding，并且会导致参数可以选择的范围减少（？）</li>
-<li>论文最初的设计是将尽可能多的代码都放在数据面处理，所以考虑使用register进行存储。虽然这样能实现line rate，但是因为P4 pipeline中不支持loop，所以如果想要查看完整的register存储内容是无法实现的。因此将这些放到MATable中，通过控制平面来管理。这样的好处还有可以利用TNA提供的digests和per-table-entry TTL，能够更简单的实现LRU机制。唯一的缺点是因为涉及到了controller，更新会需要更多的时间。</li>
-<li>ingress实现压缩，egress实现解压（编译器可以跨stage存表，可以将egress表放到还有空间的ingress stage中）</li>
-</ul>
-<h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><h3 id="参数选择"><a href="#参数选择" class="headerlink" title="参数选择"></a>参数选择</h3><p>实验可以设置的参数包括Hamming Code中的k、n和m，但是因为k和n的取值都是与m相关的，所以实际只有m可以自由选择。又考虑到对字节对齐的限制，m必须是8的倍数才可以避免无用的padding。m选择为8，这是m能够选择的最大值，同时满足倍数限制且符合硬件限制。</p>
-<p>考虑缓存的basis大小，这个参数选择同样也要考虑到字节对齐的因素（？）。因为需要留一个位存储MSB，所以满足硬件限制且不需要padding的最大值是15比特，因此缓存的basis大小为2^15 &#x3D; 32768。</p>
-<h3 id="动态学习时间"><a href="#动态学习时间" class="headerlink" title="动态学习时间"></a>动态学习时间</h3><p>实验想要评估通过控制面管理basis-ID table对性能的影响，通过交换机接收一个未知basis到这个basis注册完能够在表中查到的时间间隔来衡量。尽可能快的发送相同数据包，然后在目的交换机上计算收到第一个类型2的包和收到第一个类型3的包之间的时间间隔。实验结果表明整个时间大概在1.77ms左右。</p>
-<h3 id="压缩比例"><a href="#压缩比例" class="headerlink" title="压缩比例"></a>压缩比例</h3><p>数据集包括synthetic（类似一个传感器的typical readout）和real world（大学中一天的DNS请求）。</p>
-<img src="/2022/11/08/Zipline%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/real_comp_ratio.png" srcset="/img/loading.gif" lazyload class="" title="图片引用方法一">
-
-<p>实验有三种case：</p>
-<ul>
-<li><p>empty table 相当于是baseline</p>
-</li>
-<li><p>static table 预先计算好对应的basis以及ID</p>
-</li>
-<li><p>dynamic learning table开始是空的，随着不断注册增加表项</p>
-</li>
-<li><p>Gzip 单独将数据提取到一个文件中，并用gzip进行压缩</p>
-</li>
-</ul>
-<p>空表的3% overhead是由padding导致的。static table是理想的情况，每个basis都事先预知id；dynamic learning是实际应用的情况。用实际常用的压缩算法gzip（在交换机上肯定无法实现！）进行比较，发现性能也挺好。</p>
-<h3 id="raw-performance"><a href="#raw-performance" class="headerlink" title="raw performance"></a>raw performance</h3><img src="/2022/11/08/Zipline%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/compression_ratio.png" srcset="/img/loading.gif" lazyload class="" title="图片引用方法一">
-
-<p>发送Ethernet数据包，分为三种大小，64B、1500B以及9KB。</p>
-<p>server不断给自己发送包，通过测量ttl计算延时。</p>
-<img src="/2022/11/08/Zipline%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/latency.png" srcset="/img/loading.gif" lazyload class="" title="图片引用方法一">
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>如果想要在P4上做压缩算法，常见的压缩算法应该不太适用（比如snappy、gzip这种），因为pipeline不支持循环，因此匹配相同的子串难以实现。所以需要找一些其他的压缩算法，比如这一篇用的GD就能正好利用Tofino的内置CRC模块，并且最终实现的效果与gzip相差并不太大。</p>
+<p>但是这样开销比较大，看题解发现还可以使用双指针或者使用位运算。</p>
 
                 
               </div>
@@ -406,7 +320,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%A7%91%E7%A0%94/" class="category-chain-item">科研</a>
+  <a href="/categories/%E6%B5%85%E6%B5%85%E5%88%B7%E9%A2%98/" class="category-chain-item">浅浅刷题</a>
   
   
 
@@ -421,9 +335,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/P4%E5%8F%AF%E7%BC%96%E7%A8%8B%E4%BA%A4%E6%8D%A2%E6%9C%BA/">#P4可编程交换机</a>
-      
-        <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/">#压缩算法</a>
+        <a href="/tags/LeetCode/">#LeetCode</a>
       
     </div>
   
@@ -435,8 +347,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Zipline论文笔记</div>
-      <div>http://example.com/2022/11/08/Zipline论文笔记/</div>
+      <div>LeetCode合集</div>
+      <div>http://example.com/2022/11/11/LeetCode合集/</div>
     </div>
     <div class="license-meta">
       
@@ -448,7 +360,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年11月8日</div>
+          <div>2022年11月11日</div>
         </div>
       
       
@@ -480,15 +392,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/11/08/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95%E6%AF%94%E8%BE%83/" title="数据库常用压缩算法比较">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">数据库常用压缩算法比较</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2022/11/08/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E7%94%A8%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95%E6%AF%94%E8%BE%83/" title="数据库常用压缩算法比较">
+                        <span class="hidden-mobile">数据库常用压缩算法比较</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
