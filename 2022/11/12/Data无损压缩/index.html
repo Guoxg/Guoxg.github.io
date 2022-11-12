@@ -24,8 +24,9 @@
 <meta property="og:description" content="研究问题&amp;动机传统的data deduplication是对整个数据块进行去重，而去重需要两个数据块完全相同，才能认为有相同的base。但对于time series data（论文中举的例子是传感器检测温度的数据）来说，相邻的数据块可能会非常相似，但是因为不是完全相同，所以没有办法去重（现有的研究也有提出一种multi-step的方法，即当出现第一个重复的chunk，除了去重之外，还要遍历">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2022/11/12/Data%E6%97%A0%E6%8D%9F%E5%8E%8B%E7%BC%A9/greedy.png">
+<meta property="og:image" content="http://example.com/2022/11/12/Data%E6%97%A0%E6%8D%9F%E5%8E%8B%E7%BC%A9/dict.png">
 <meta property="article:published_time" content="2022-11-12T11:03:25.000Z">
-<meta property="article:modified_time" content="2022-11-12T12:47:54.503Z">
+<meta property="article:modified_time" content="2022-11-12T13:01:41.682Z">
 <meta property="article:author" content="Jiayi Guo">
 <meta property="article:tag" content="压缩算法">
 <meta name="twitter:card" content="summary_large_image">
@@ -238,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k 字
+          1.3k 字
         
       </span>
     
@@ -249,7 +250,7 @@
         
         
         
-          9 分钟
+          11 分钟
         
       </span>
     
@@ -305,15 +306,21 @@
 <h2 id="压缩算法"><a href="#压缩算法" class="headerlink" title="压缩算法"></a>压缩算法</h2><p>整个压缩的主要逻辑就是要将chunk分成两部分，一部分是basis（用于deduplication），另一部分是deviation（直接存储不进行压缩）。</p>
 <p>如果选择deviation的长度为2个字节，那么可以对2^16 &#x3D; 65536个相似的数据块进行去重。</p>
 <p>假设一共有c个chunk，不妨分别记为z<sub>1</sub>, z<sub>2</sub>,…,z<sub>c</sub>。并且每一个chunk的长度都是n比特。压缩算法会把每一个chunk z<sub>i</sub>分割成两个部分，一个是长度为k的base x<sub>i</sub>，另一个是长度为m的deviation y<sub>i</sub>。</p>
-<p>但是在压缩之前会先进行一个移位的操作，因为在time series data中，通常会有一些bits跟其余部分的关联性很低（比如LSB的数据很难根据MSB的数据进行推测，这两个关联性不大）。</p>
+<p>但是在压缩之前会先进行一个移位的操作，因为在time series data中，通常会有一些bits跟其余部分的关联性很低（比如LSB的数据很难根据MSB的数据进行推测，这两个关联性不大）。想要实现的是尽可能的分成两个关联性低的部分。</p>
 <p>为了定量的精确衡量这种关联性的大小，使用两个随机变量的互信息来定义：</p>
-<p>$I(x,y) &#x3D; H(x) + H(Y) - H(X, Y)$</p>
+<p>$$I(x,y) &#x3D; H(x) + H(Y) - H(X, Y)$$</p>
 <p>如果假设deviation的长度m是已知的，J是对应deviation的下标集合，那么移位的操作希望最小化H(Z<sub>J</sub>, Z<sub>J<sup>C</sup></sub>)的互信息取值。</p>
 <p>当chunk很大的时候，一一枚举开销非常大，使用贪心算法进行m次迭代：</p>
 <img src="/2022/11/12/Data%E6%97%A0%E6%8D%9F%E5%8E%8B%E7%BC%A9/greedy.png" srcset="/img/loading.gif" lazyload class="" title="图片引用方法一">
 
 <p>（或者也可以设置停止条件，但是可能迭代次数会更多？）</p>
 <p>这样的压缩算法可以保证稳定性（某些chunk损坏不会影响剩下其他chunk的压缩和解压）和对数据的即时存储、搜索和查找。</p>
+<p><strong>重点：估计过程只需要用training set做一次！可以开始的时候系统先不压缩，收集一定量的数据完成估计过程，确定J的下标集合</strong></p>
+<p>因为还需要解压，所以还需要对J进行存储。因为J中的内容是m个取值范围不会超过n的整数，所以可以用Elias gamma code进行编码。这样编码之后需要的空间不会超过$m(2logn+1)$。</p>
+<p>压缩过程需要一个deduplication dictionary（初始是一个空词典），用来存储已经出现过的base。</p>
+<img src="/2022/11/12/Data%E6%97%A0%E6%8D%9F%E5%8E%8B%E7%BC%A9/dict.png" srcset="/img/loading.gif" lazyload class="" title="图片引用方法一">
+
+<p>如果已经出现，换成对应id+deviation。</p>
 <h2 id="压缩性能"><a href="#压缩性能" class="headerlink" title="压缩性能"></a>压缩性能</h2><h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>这个压缩算法的最明显的好处是每一个chunk只需要一次pass就可以压缩完成，并且需要移位的下标信息可以预训练获得，可以使用多次。</p>
 
                 
