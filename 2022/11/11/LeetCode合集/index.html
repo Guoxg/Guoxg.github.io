@@ -24,7 +24,7 @@
 <meta property="og:description" content="LeetCode1704 判断字符串两段是否相等题目整体没有什么难度，使用了最简单的得到两个子串后分别计数并比较是否相等。 1234567891011121314151617181920212223242526272829303132333435363738394041class Solution &amp;#123;public:    bool halvesAreAlike(string s) &amp;#1">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-11-11T00:25:10.000Z">
-<meta property="article:modified_time" content="2022-11-15T02:15:34.171Z">
+<meta property="article:modified_time" content="2022-11-16T10:23:09.046Z">
 <meta property="article:author" content="Jiayi Guo">
 <meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary_large_image">
@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.1k 字
+          3.8k 字
         
       </span>
     
@@ -247,7 +247,7 @@
         
         
         
-          26 分钟
+          32 分钟
         
       </span>
     
@@ -311,32 +311,10 @@
 <h2 id="LeetCode1710-卡车上的最大单元数"><a href="#LeetCode1710-卡车上的最大单元数" class="headerlink" title="LeetCode1710 卡车上的最大单元数"></a>LeetCode1710 卡车上的最大单元数</h2><p>思路比较简单，在truckSize允许的前提下每次都选择对应unit最大的boxType。所以需要对一个二维数组按照按照unit数目进行排序。</p>
 <p>需要自定义vector sort中的比较器。需要注意，comp函数需要定义为static类型，否则编译报错。</p>
 <p>同时因为每次拿完一个就调用了erase函数，所以需要考虑到仍然有剩余空间但已经没有箱子的情况，否则会运行报内存错误。</p>
-<p>&#96;&#96;&#96;C<br>#include<algorithm><br>class Solution {<br>public:<br>    int maximumUnits(vector&lt;vector<int>&gt;&amp; boxTypes, int truckSize) {<br>        int boxTypeNum &#x3D; boxTypes.size();<br>        int res &#x3D; 0;<br>        int remainingSize &#x3D; truckSize;</p>
-<pre><code class="hljs">    sort(boxTypes.begin(),boxTypes.end(),comp);
-    while(remainingSize != 0) &#123;
-        if(boxTypes.empty()) &#123;
-            break;
-        &#125;
-        int currentNum = boxTypes[0][0];
-        int currentUnit = boxTypes[0][1];
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;algorithm&gt;</span></span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br>public:<br>    <span class="hljs-type">int</span> <span class="hljs-title function_">maximumUnits</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;&gt;&amp; boxTypes, <span class="hljs-type">int</span> truckSize)</span> &#123;<br>        <span class="hljs-type">int</span> boxTypeNum = boxTypes.size();<br>        <span class="hljs-type">int</span> res = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> remainingSize = truckSize;<br><br>        sort(boxTypes.begin(),boxTypes.end(),comp);<br>        <span class="hljs-keyword">while</span>(remainingSize != <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">if</span>(boxTypes.empty()) &#123;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>            <span class="hljs-type">int</span> currentNum = boxTypes[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>];<br>            <span class="hljs-type">int</span> currentUnit = boxTypes[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>];<br><br>            <span class="hljs-keyword">if</span>(currentNum &lt;= remainingSize) &#123;<br>                remainingSize -= currentNum;<br>                res += currentNum * currentUnit;<br>            &#125;<br>            <span class="hljs-keyword">else</span> &#123;<br>                res += remainingSize * currentUnit;<br>                remainingSize = <span class="hljs-number">0</span>;<br>            &#125;<br><br>            boxTypes.erase(boxTypes.begin());<br>        &#125;<br><br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>private:<br>    <span class="hljs-type">static</span> <span class="hljs-type">bool</span> <span class="hljs-title function_">comp</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;&amp; box1, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;&amp; box2)</span> &#123;<br>        <span class="hljs-keyword">return</span> box1[<span class="hljs-number">1</span>] &gt; box2[<span class="hljs-number">1</span>];<br>    &#125;<br>&#125;;<br><br></code></pre></td></tr></table></figure>
 
-        if(currentNum &lt;= remainingSize) &#123;
-            remainingSize -= currentNum;
-            res += currentNum * currentUnit;
-        &#125;
-        else &#123;
-            res += remainingSize * currentUnit;
-            remainingSize = 0;
-        &#125;
-
-        boxTypes.erase(boxTypes.begin());
-    &#125;
-
-    return res;
-&#125;
-</code></pre>
-<p>private:<br>    static bool comp(vector<int>&amp; box1, vector<int>&amp; box2) {<br>        return box1[1] &gt; box2[1];<br>    }<br>};<br>&#96;&#96;&#96;C</p>
-
+<h2 id="LeetCode-1603设计停车系统"><a href="#LeetCode-1603设计停车系统" class="headerlink" title="LeetCode 1603设计停车系统"></a>LeetCode 1603设计停车系统</h2><p>这个题目没有难点，简单维护一个现有车位的变量即可。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ParkingSystem</span> &#123;</span><br>public:<br>    ParkingSystem(<span class="hljs-type">int</span> big, <span class="hljs-type">int</span> medium, <span class="hljs-type">int</span> small) &#123;<br>        RemainingBig = big;<br>        RemainingMed = medium;<br>        RemainingSmall = small;<br>    &#125;<br>    <br>    <span class="hljs-type">bool</span> <span class="hljs-title function_">addCar</span><span class="hljs-params">(<span class="hljs-type">int</span> carType)</span> &#123;<br>        <span class="hljs-keyword">if</span>(carType == <span class="hljs-number">1</span>) &#123;<br>            <span class="hljs-keyword">if</span>(RemainingBig &gt;= <span class="hljs-number">1</span>) &#123;<br>                RemainingBig -= <span class="hljs-number">1</span>;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(carType == <span class="hljs-number">2</span>) &#123;<br>            <span class="hljs-keyword">if</span>(RemainingMed &gt;= <span class="hljs-number">1</span>) &#123;<br>                RemainingMed -= <span class="hljs-number">1</span>;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(carType == <span class="hljs-number">3</span>) &#123;<br>            <span class="hljs-keyword">if</span>(RemainingSmall &gt;= <span class="hljs-number">1</span>) &#123;<br>                RemainingSmall -= <span class="hljs-number">1</span>;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br>private:<br>    <span class="hljs-type">int</span> RemainingBig;<br>    <span class="hljs-type">int</span> RemainingMed;<br>    <span class="hljs-type">int</span> RemainingSmall;<br>&#125;;<br></code></pre></td></tr></table></figure>
                 
               </div>
             
