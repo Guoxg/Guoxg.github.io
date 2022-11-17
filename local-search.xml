@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>openflow学习笔记</title>
+    <link href="/2022/11/17/openflow%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <url>/2022/11/17/openflow%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Introduction-to-OpenFlow"><a href="#Introduction-to-OpenFlow" class="headerlink" title="Introduction to OpenFlow"></a>Introduction to OpenFlow</h2><p>什么是OpenFlow协议？</p><p>一个标准化的协议，可以与不同厂商的交换机的转发行为进行交互。OpenFlow是很多SDN中的一个key protocol，能够动态、编程的管理网络中交换机的行为。</p><h2 id="简单实验"><a href="#简单实验" class="headerlink" title="简单实验"></a>简单实验</h2><img src="/2022/11/17/openflow%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/topo.png" class="" title="图片引用方法一"><p>S1是openflow kernel switch，C0是reference controller。下面四个是host主机。在h4上运行一个web server，并且从h1发送一个http 请求。</p><p>实验使用的是mininet进行模拟，先配置环境。</p><h3 id="Mininet环境配置"><a href="#Mininet环境配置" class="headerlink" title="Mininet环境配置"></a>Mininet环境配置</h3><img src="/2022/11/17/openflow%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/setup.png" class="" title="图片引用方法一"><p>之前学习mininet教程的时候是直接sudo apt-get install mininet命令安装的，感觉下的不全。但是直接使用-a参数全部下载的时候会报错，提示的错误信息如下图所示。</p><img src="/2022/11/17/openflow%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/error.png" class="" title="图片引用方法一"><p>这个问题直接搜的时候搜不出来太多有用的解决方法，后来直接上网搜索undefined pthread_yield，发现有可能是因为这不是一个标准的方法，<a href="https://stackoverflow.com/questions/73367523/pthread-yield-problem-compiling-32-bit-program">https://stackoverflow.com/questions/73367523/pthread-yield-problem-compiling-32-bit-program</a> 中建议替换成sched_yield。</p><p>因此直接修改了wc_event.c文件中的源代码：</p><img src="/2022/11/17/openflow%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/modify.png" class="" title="图片引用方法一"><p>但是因为install.sh中的文件是完整的，已经git clone了其他库的代码就不能从头完整执行一遍，因此是从代码中对应没有执行完的cbench函数直接逐条命令复制到bash中执行的。不过还需要注意$DIST、$INSTALL这种需要对应代码一开始的变量设置。</p><p>最终这样执行完毕后（也不确定算不算完全安装好，但是后续安装过程中也没有再报错，希望能用。。。），使用官方安装文档中的一个测试命令试了一下，可以正常运行。</p><img src="/2022/11/17/openflow%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/test.png" class="" title="图片引用方法一"><h3 id=""><a href="#" class="headerlink" title=""></a></h3>]]></content>
+    
+    
+    <categories>
+      
+      <category>科研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>SDN</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Data无损压缩</title>
     <link href="/2022/11/12/Data%E6%97%A0%E6%8D%9F%E5%8E%8B%E7%BC%A9/"/>
     <url>/2022/11/12/Data%E6%97%A0%E6%8D%9F%E5%8E%8B%E7%BC%A9/</url>
