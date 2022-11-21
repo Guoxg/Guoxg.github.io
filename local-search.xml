@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>P4Spec笔记</title>
+    <link href="/2022/11/21/P4Spec%E7%AC%94%E8%AE%B0/"/>
+    <url>/2022/11/21/P4Spec%E7%AC%94%E8%AE%B0/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h1><p>P4（Programming Protocol-independent Packet Processors）是可编程交换机（其实也支持很多不同设备，如NIC、FPGA、路由等）数据平面定义自定义如何处理packet的一种语言。即只实现data plane的功能以及部分与control plane的通信接口。</p><p>下图给出传统固定功能交换机与P4可编程交换机的区别。</p><img src="/2022/11/21/P4Spec%E7%AC%94%E8%AE%B0/diff.png" class="" title="图片引用方法一"><p>传统交换机中，数据平面的功能由芯片厂商决定，因此控制平面可以修改的数据平面中的表项也是固定的。</p><p>而可编程交换机中，最大的区别在于：</p><ol><li>数据平面的功能不再是固定的，而是通过用户编写的P4程序决定。因此也不会再有内置的可支持网络协议。</li><li>控制平面与数据平面的通信channel与之前相同，但修改的table和有状态的object由p4程序决定。编译器会生成控制平面与数据平面通信的API。</li></ol><p>关键部分：header定义、parser解析序列定义、MATable（构建lookup key，用key查找action，执行对应action）、control flow、external object（如checksum、hash等hard-wired）、用户定义metadata、intrinsic metadata（architecture提供，如报文进入的端口号）。</p><img src="/2022/11/21/P4Spec%E7%AC%94%E8%AE%B0/workflow.png" class="" title="图片引用方法一"><p>上图为p4的正常工作流程。可以看到，编译完p4程序生成的一个是dataplane runtime（对应代码的configuration），一个是控制平面管理数据平面的API。</p><p>因为p4不支持loop（只有parser可以包含，但实际上编译器还是会展开，并且循环的层数也有限制），因此p4程序的计算复杂度是线性的，某种程度上保证了能够快速处理packet。</p><img src="/2022/11/21/P4Spec%E7%AC%94%E8%AE%B0/14_16.png" class="" title="图片引用方法一"><p>16相比14的区别在于将很多feature都放到library中（如counter、checksum以及meter）。</p><h1 id="Architecture-Model"><a href="#Architecture-Model" class="headerlink" title="Architecture Model"></a>Architecture Model</h1><p>architecture可以看做是程序和target之间的contract。厂商需要提供一个p4编译器和对应architecture的定义。</p><img src="/2022/11/21/P4Spec%E7%AC%94%E8%AE%B0/interface.png" class="" title="图片引用方法一"><p>上图是两个可编程组件的interface示例，其中control register&#x2F;signal实际就是architecture定义的intrinsic metadata。同时还可以使用自定义metadata来操作。</p><img src="/2022/11/21/P4Spec%E7%AC%94%E8%AE%B0/extern.png" class="" title="图片引用方法一"><p>还可以调用architecture提供的内置extern object &amp; function，这种extern重点要看的是提供的接口。</p><h1 id="Data-Plane-interface"><a href="#Data-Plane-interface" class="headerlink" title="Data Plane interface"></a>Data Plane interface</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs C">control MatchActionPipe&lt;H&gt;(in bit&lt;<span class="hljs-number">4</span>&gt; inputPort,<br>                           inout H parsedHeaders,<br>                           out bit&lt;<span class="hljs-number">4</span>&gt; outputPort);<br></code></pre></td></tr></table></figure><p>定义了一个可编程block MatchActionPipe。其中第一个参数是一个4比特的inputPort（输入，无法修改），第二个参数是一个类型为H的object（既是输入也是输出），第三个参数是一个4比特的outputPort（初始值一开始未定义，可以修改）</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-keyword">extern</span> Checksum16 &#123;<br>    Checksum16(); <span class="hljs-comment">// constructor</span><br>    <span class="hljs-type">void</span> <span class="hljs-title function_">clear</span><span class="hljs-params">()</span>; <span class="hljs-comment">// prepare unit for computation</span><br>    <span class="hljs-type">void</span> update&lt;T&gt;(in T data); <span class="hljs-comment">// add data to checksum</span><br>    <span class="hljs-type">void</span> remove&lt;T&gt;(in T data); <span class="hljs-comment">// remove data from existing checksum</span><br>    bit&lt;16&gt; <span class="hljs-title function_">get</span><span class="hljs-params">()</span>; <span class="hljs-comment">// get the checksum for the data added since last clear</span><br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>科研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>P4</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>TofinoP4学习笔记</title>
     <link href="/2022/11/19/TofinoP4%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <url>/2022/11/19/TofinoP4%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
