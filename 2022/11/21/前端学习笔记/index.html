@@ -24,8 +24,10 @@
 <meta property="og:description" content="参考教程 https:&#x2F;&#x2F;web.qianguyihao.com&#x2F;。 前端工具浅浅安装了一些插件，剩下的小技巧以后用到再看，昨晚有点晕字。 HTMLWeb标准因为很多浏览器的内核不同，避免因为页面解析导致显示效果不同，从而由W3C组织来指定web相关的标准。  结构标准（html）：网页元素进行整理和分类，从语义的角度描述页面的结构  表现标准（CSS）：样式，如颜色大小排版等，虽然这些属性在ht">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2022/11/21/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/browser_arc.png">
+<meta property="og:image" content="http://example.com/2022/11/21/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/test.png">
+<meta property="og:image" content="http://example.com/2022/11/21/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/res.png">
 <meta property="article:published_time" content="2022-11-21T12:30:22.000Z">
-<meta property="article:modified_time" content="2022-11-23T14:16:48.576Z">
+<meta property="article:modified_time" content="2022-11-25T12:22:52.069Z">
 <meta property="article:author" content="Jiayi Guo">
 <meta property="article:tag" content="前端">
 <meta name="twitter:card" content="summary_large_image">
@@ -238,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          488 字
+          1.2k 字
         
       </span>
     
@@ -249,7 +251,7 @@
         
         
         
-          5 分钟
+          11 分钟
         
       </span>
     
@@ -316,7 +318,23 @@
 <p>JS引擎解析网页中的js代码，处理并运行。实际上是一个解释器，会逐行翻译源码为机器语言，因此js是一种脚本语言。</p>
 <img src="/2022/11/21/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/browser_arc.png" srcset="/img/loading.gif" lazyload class="" title="图片引用方法一">
 
-<h2 id="html详解"><a href="#html详解" class="headerlink" title="html详解"></a>html详解</h2><p>超文本标记语言不是一种编程语言，而是一种描述性的标记语言，即有一套标记标签（如&lt;img&gt;、&lt;h1&gt;等）。</p>
+<h2 id="html详解"><a href="#html详解" class="headerlink" title="html详解"></a>html详解</h2><p>超文本标记语言不是一种编程语言，而是一种描述性的标记语言，即有一套标记标签（如&lt;img&gt;、&lt;h1&gt;等），不同的标签给文本加上不同的语义。常见的编程语言在写完代码运行之前还需要经过一步编译，但是标记语言不需要，直接由浏览器解析执行即可。</p>
+<p>目前网页中常用的是xhtml，是严格的、纯净的html。</p>
+<img src="/2022/11/21/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/test.png" srcset="/img/loading.gif" lazyload class="" title="图片引用方法一">
+
+<p>创建了一个test.html文件，只需要输入html:5再按tab键就可以自动补全整体框架。页面展示结果如下。</p>
+<img src="/2022/11/21/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/res.png" srcset="/img/loading.gif" lazyload class="" title="图片引用方法一">
+
+<p>具体对html语句进行解析。</p>
+<p>第一句&lt;!DOCTYPE …&gt;是文档声明头，浏览器通过这个语句分析文档使用的是哪种html或者xhtml规范。</p>
+<p>&lt;head&gt;标签里面定义了页面的配置，包括字符集（编码与定义不匹配会导致乱码，一般使用utf-8，但如果只显示中文且希望显示速度越快越好，可以用gb2312）、关键词（告诉引擎网页的关键字，可以提高搜索的命中率）、页面描述（可以在搜索的结果页面显示，SEO搜索引擎优化）、页面标题、IE适配、视口（viewport，Web移动端会用到）、iPhone小图标等等。</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">&lt;meta <span class="hljs-attribute">http-equiv</span>=<span class="hljs-string">&quot;refresh&quot;</span> <span class="hljs-attribute">content</span>=<span class="hljs-string">&quot;3;http://www.baidu.com&quot;</span>&gt;<br></code></pre></td></tr></table></figure>
+<p>标签的含义为3秒之后，跳转到百度页面。</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">&lt;base <span class="hljs-attribute">href</span>=<span class="hljs-string">&quot;/&quot;</span>&gt;<br></code></pre></td></tr></table></figure>
+<p>之后所有的a超链接都以base为基础。</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">&lt;body <span class="hljs-attribute">link</span>=<span class="hljs-string">&quot;red&quot;</span> <span class="hljs-attribute">alink</span>=<span class="hljs-string">&quot;purple&quot;</span> <span class="hljs-attribute">vlink</span>=<span class="hljs-string">&quot;yellow&quot;</span>&gt;<br></code></pre></td></tr></table></figure>
+<p>link定义的颜色是默认的显示颜色，alink定义的颜色是点击且鼠标不松开时显示的颜色，vlink是点击完成之后显示的颜色。</p>
+<p>总的来说，html关心的是标签的嵌套结构，与tab或者换行没有关系。</p>
 
                 
               </div>
