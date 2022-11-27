@@ -26,8 +26,10 @@
 <meta property="og:image" content="http://example.com/2022/11/21/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/browser_arc.png">
 <meta property="og:image" content="http://example.com/2022/11/21/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/test.png">
 <meta property="og:image" content="http://example.com/2022/11/21/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/res.png">
+<meta property="og:image" content="http://example.com/2022/11/21/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/div+span.png">
+<meta property="og:image" content="http://example.com/2022/11/21/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/div+span_res.png">
 <meta property="article:published_time" content="2022-11-21T12:30:22.000Z">
-<meta property="article:modified_time" content="2022-11-25T12:22:52.069Z">
+<meta property="article:modified_time" content="2022-11-26T12:02:53.523Z">
 <meta property="article:author" content="Jiayi Guo">
 <meta property="article:tag" content="前端">
 <meta name="twitter:card" content="summary_large_image">
@@ -240,7 +242,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          1.6k 字
         
       </span>
     
@@ -251,7 +253,7 @@
         
         
         
-          11 分钟
+          14 分钟
         
       </span>
     
@@ -335,6 +337,22 @@
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">&lt;body <span class="hljs-attribute">link</span>=<span class="hljs-string">&quot;red&quot;</span> <span class="hljs-attribute">alink</span>=<span class="hljs-string">&quot;purple&quot;</span> <span class="hljs-attribute">vlink</span>=<span class="hljs-string">&quot;yellow&quot;</span>&gt;<br></code></pre></td></tr></table></figure>
 <p>link定义的颜色是默认的显示颜色，alink定义的颜色是点击且鼠标不松开时显示的颜色，vlink是点击完成之后显示的颜色。</p>
 <p>总的来说，html关心的是标签的嵌套结构，与tab或者换行没有关系。</p>
+<p>html标签是分等级的，所有标签一共分为两种：</p>
+<ul>
+<li><p>文本级标签（如p、span、a、b、i、u、em），标签里面的内容只能够放文字、图片和表单元素（不能放input）</p>
+</li>
+<li><p>容器级标签（div、h、li、dt、dd），可以放任意东西</p>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css">&lt;<span class="hljs-selector-tag">p</span>&gt;<br>	This is <span class="hljs-selector-tag">a</span> paragraph<br>	&lt;<span class="hljs-selector-tag">h1</span>&gt;This is level <span class="hljs-number">1</span> <span class="hljs-selector-tag">header</span>&lt;/<span class="hljs-selector-tag">h1</span>&gt;<br>&lt;/<span class="hljs-selector-tag">p</span>&gt;<br></code></pre></td></tr></table></figure>
+
+<h3 id="div标签和span标签"><a href="#div标签和span标签" class="headerlink" title="div标签和span标签"></a>div标签和span标签</h3><p>div标签可以把标签中的内容分割为独立区块，必须单独占据一行。span标签和div标签作用一致，但是不需要独占一行。div标签是一个容器级标签，根据上文的介绍，可以放任意的东西（甚至可以放div自己）。而span标签是一个文本级标签，只能放文字、图片和表单。</p>
+<img src="/2022/11/21/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/div+span.png" srcset="/img/loading.gif" lazyload class="" title="图片引用方法一">
+
+<p>浏览器的显示效果为：</p>
+<img src="/2022/11/21/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/div+span_res.png" srcset="/img/loading.gif" lazyload class="" title="图片引用方法一">
+
+<p>div+css模式就是通过div标签进行布局和分块，用css完成样式。</p>
 
                 
               </div>
