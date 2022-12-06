@@ -29,8 +29,10 @@
 <meta property="og:image" content="http://example.com/2022/11/21/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/div+span.png">
 <meta property="og:image" content="http://example.com/2022/11/21/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/div+span_res.png">
 <meta property="og:image" content="http://example.com/2022/11/21/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/anchor.png">
+<meta property="og:image" content="http://example.com/2022/11/21/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/embed_list.png">
+<meta property="og:image" content="http://example.com/2022/11/21/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/embed_effect.png">
 <meta property="article:published_time" content="2022-11-21T12:30:22.000Z">
-<meta property="article:modified_time" content="2022-11-28T11:55:50.635Z">
+<meta property="article:modified_time" content="2022-12-05T13:15:28.457Z">
 <meta property="article:author" content="Jiayi Guo">
 <meta property="article:tag" content="前端">
 <meta name="twitter:card" content="summary_large_image">
@@ -243,7 +245,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2k 字
+          2.3k 字
         
       </span>
     
@@ -254,7 +256,7 @@
         
         
         
-          17 分钟
+          20 分钟
         
       </span>
     
@@ -347,6 +349,7 @@
 </ul>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css">&lt;<span class="hljs-selector-tag">p</span>&gt;<br>	This is <span class="hljs-selector-tag">a</span> paragraph<br>	&lt;<span class="hljs-selector-tag">h1</span>&gt;This is level <span class="hljs-number">1</span> <span class="hljs-selector-tag">header</span>&lt;/<span class="hljs-selector-tag">h1</span>&gt;<br>&lt;/<span class="hljs-selector-tag">p</span>&gt;<br></code></pre></td></tr></table></figure>
 
+<p>实际用什么标签不是根据样式决定，而是根据<strong>语义</strong>确定。</p>
 <h3 id="div标签和span标签"><a href="#div标签和span标签" class="headerlink" title="div标签和span标签"></a>div标签和span标签</h3><p>div标签可以把标签中的内容分割为独立区块，必须单独占据一行。span标签和div标签作用一致，但是不需要独占一行。div标签是一个容器级标签，根据上文的介绍，可以放任意的东西（甚至可以放div自己）。而span标签是一个文本级标签，只能放文字、图片和表单。</p>
 <img src="/2022/11/21/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/div+span.png" srcset="/img/loading.gif" lazyload class="" title="图片引用方法一">
 
@@ -370,6 +373,17 @@
 <li>邮件链接</li>
 </ul>
 <p>最后需要注意，标签&lt;a&gt;是文本标签，语义小于&lt;p&gt;。</p>
+<h3 id="列表标签"><a href="#列表标签" class="headerlink" title="列表标签"></a>列表标签</h3><p>无序和有序列表标签都可以嵌套，如下图所示（以ul为例）。</p>
+<img src="/2022/11/21/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/embed_list.png" srcset="/img/loading.gif" lazyload class="" title="图片引用方法一">
+
+<p>页面显示结果为</p>
+<img src="/2022/11/21/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/embed_effect.png" srcset="/img/loading.gif" lazyload class="" title="图片引用方法一">
+
+<p>实际应用于页面的导航栏，或者一个li放很多东西（因为li是一个容器级标签），如搜索出来的结果每一个都是一个li。</p>
+<p>定义列表是标签&lt;dl&gt;，只能包含&lt;dt&gt;（列表项标题）和&lt;dd&gt;（列表项描述）</p>
+<p>实际应用可能是具体的商品分类。</p>
+<h3 id="表格标签"><a href="#表格标签" class="headerlink" title="表格标签"></a>表格标签</h3><p>一个&lt;table&gt;标签中的行是&lt;tr&gt;，每个行的组成单元是&lt;td&gt;。具体一些表格样式的设置可以通过css完成。</p>
+<p>单元格还可以通过colspan和rowspan进行横向或者纵向的合并（但是要把合并的单元格删掉）。</p>
 
                 
               </div>
