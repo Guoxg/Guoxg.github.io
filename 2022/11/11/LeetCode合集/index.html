@@ -26,7 +26,7 @@
 <meta property="og:image" content="http://example.com/2022/11/11/LeetCode%E5%90%88%E9%9B%86/bst.png">
 <meta property="og:image" content="http://example.com/2022/11/11/LeetCode%E5%90%88%E9%9B%86/sumxor.png">
 <meta property="article:published_time" content="2022-11-11T00:25:10.000Z">
-<meta property="article:modified_time" content="2022-12-06T01:33:19.724Z">
+<meta property="article:modified_time" content="2022-12-07T01:29:56.955Z">
 <meta property="article:author" content="Jiayi Guo">
 <meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary_large_image">
@@ -239,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          20k 字
+          21k 字
         
       </span>
     
@@ -250,7 +250,7 @@
         
         
         
-          167 分钟
+          174 分钟
         
       </span>
     
@@ -405,6 +405,11 @@
 
 <h2 id="LeetCode203-移除链表元素"><a href="#LeetCode203-移除链表元素" class="headerlink" title="LeetCode203 移除链表元素"></a>LeetCode203 移除链表元素</h2><p>因为需要在遍历的同时将相同取值的元素删除，所以同时需要维护一个prev的指针。而且会有可能在head处匹配的值就是相等的，那么还需要修改head的取值，并且因为head前面没有其他元素，所以在head的时候curr和prev是相同的。并且当匹配完成的时候指针已经更新过了，直接continue跳过下面正常的后移一位，否则会有元素被跳过，删除不了。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs C">ListNode* <span class="hljs-title function_">removeElements</span><span class="hljs-params">(ListNode* head, <span class="hljs-type">int</span> val)</span> &#123;<br>        ListNode* current_node = head;<br>        ListNode* prev_node = head;<br><br>        <span class="hljs-keyword">while</span>(current_node != nullptr) &#123;<br>            <span class="hljs-type">int</span> current_val = current_node -&gt; val;<br><br>            <span class="hljs-keyword">if</span>(current_val == val &amp;&amp; current_node == head) &#123;<br>                head = head -&gt; next;<br>                current_node = head;<br>                prev_node = head;<br>                <span class="hljs-keyword">continue</span>;<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(current_val == val) &#123;<br>                prev_node -&gt; next = current_node -&gt; next;<br>                current_node = current_node -&gt; next;<br>                <span class="hljs-keyword">continue</span>;<br>            &#125;<br><br>            <span class="hljs-keyword">if</span>(current_node == head &amp;&amp; current_node != nullptr) &#123;<br>                current_node = current_node -&gt; next;<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(current_node != nullptr)&#123;<br>                current_node = current_node -&gt; next;<br>                prev_node = prev_node -&gt; next;<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-keyword">return</span> head;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="LeetCode1790-仅执行一次字符串交换能否使两个字符串相等"><a href="#LeetCode1790-仅执行一次字符串交换能否使两个字符串相等" class="headerlink" title="LeetCode1790 仅执行一次字符串交换能否使两个字符串相等"></a>LeetCode1790 仅执行一次字符串交换能否使两个字符串相等</h2><p>因为只交换一次就要让两个字符串相等，所以很显然遍历一次两个字符串只能有两个位置的下标对应不上（只有一个不对应或者超过2个不对应都不能满足）。而且一开始只是简单这样比较，会导致一些testcase不过，比如”znb”和”anc”，也是有两个位置的下标无法对应，但是还需要进一步确保对应下标上的字符交换后相等。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">bool</span> <span class="hljs-title function_">areAlmostEqual</span><span class="hljs-params">(<span class="hljs-built_in">string</span> s1, <span class="hljs-built_in">string</span> s2)</span> &#123;<br>        <span class="hljs-type">int</span> size = s1.size();<br>        <span class="hljs-type">int</span> diff_num = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">char</span> diff_s1_first = <span class="hljs-string">&#x27; &#x27;</span>;<br>        <span class="hljs-type">char</span> diff_s2_first = <span class="hljs-string">&#x27; &#x27;</span>;<br>        <span class="hljs-type">char</span> diff_s1_second = <span class="hljs-string">&#x27; &#x27;</span>;<br>        <span class="hljs-type">char</span> diff_s2_second = <span class="hljs-string">&#x27; &#x27;</span>;<br>        <span class="hljs-type">int</span> i;<br><br>        <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>;i &lt; size;i++) &#123;<br>            <span class="hljs-keyword">if</span>(s1[i] != s2[i]) &#123;<br>                diff_num += <span class="hljs-number">1</span>;<br>                <span class="hljs-keyword">if</span>(diff_num == <span class="hljs-number">1</span>) &#123;<br>                    diff_s1_first = s1[i];<br>                    diff_s2_first = s2[i];<br>                &#125;<br>                <span class="hljs-keyword">else</span> &#123;<br>                    diff_s1_second = s1[i];<br>                    diff_s2_second = s2[i];<br>                &#125;<br>            &#125;<br>            <span class="hljs-keyword">if</span>(diff_num &gt; <span class="hljs-number">2</span>) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-keyword">if</span>(diff_s1_first != diff_s2_second || diff_s2_first != diff_s1_second) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+
                 
               </div>
             
