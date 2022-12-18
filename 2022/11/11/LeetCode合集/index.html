@@ -26,7 +26,7 @@
 <meta property="og:image" content="http://example.com/2022/11/11/LeetCode%E5%90%88%E9%9B%86/bst.png">
 <meta property="og:image" content="http://example.com/2022/11/11/LeetCode%E5%90%88%E9%9B%86/sumxor.png">
 <meta property="article:published_time" content="2022-11-11T00:25:10.000Z">
-<meta property="article:modified_time" content="2022-12-17T10:58:15.726Z">
+<meta property="article:modified_time" content="2022-12-18T12:26:32.275Z">
 <meta property="article:author" content="Jiayi Guo">
 <meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary_large_image">
@@ -250,7 +250,7 @@
         
         
         
-          223 分钟
+          226 分钟
         
       </span>
     
@@ -440,6 +440,12 @@
 
 <h2 id="LeetCode993-最近的请求次数"><a href="#LeetCode993-最近的请求次数" class="headerlink" title="LeetCode993 最近的请求次数"></a>LeetCode993 最近的请求次数</h2><p>一开始以为只需要维护简单的变量即可，后来发现要求返回的是3000ms之内的请求数，所以需要维护一个对应时间的数组。如果直接用&lt;vector&gt;还需要遍历前面的，并且删除的话需要移动元素，比较麻烦。所以想到使用stl中的queue，因为题目中保证单调递增，所以队列中最前面的元素肯定是时间距离最远的元素。所以每次都拿front元素判断是不是超过了3000ms即可。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RecentCounter</span> &#123;</span><br>public:<br>    RecentCounter() &#123;<br>        <br>    &#125;<br>    <br>    <span class="hljs-type">int</span> <span class="hljs-title function_">ping</span><span class="hljs-params">(<span class="hljs-type">int</span> t)</span> &#123;<br>        request_time_queue.push(t);<br><br>        <span class="hljs-keyword">while</span>(request_time_queue.front() &lt; t - <span class="hljs-number">3000</span>) &#123;<br>            request_time_queue.pop();<br>        &#125;<br><br>        <span class="hljs-keyword">return</span> request_time_queue.size();<br>    &#125;<br>private:<br>    <span class="hljs-built_in">queue</span>&lt;<span class="hljs-type">int</span>&gt; request_time_queue;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h2 id="LeetCode268-丢失的数字"><a href="#LeetCode268-丢失的数字" class="headerlink" title="LeetCode268 丢失的数字"></a>LeetCode268 丢失的数字</h2><p>因为范围已经给定是从0到n，所以直接思路就是直接对数组进行排序，然后依次遍历，只要找到跟下标不吻合的即为缺失数字。第二种思路是使用哈希的方法，需要两遍遍历，第一遍确定哪些数字存在，第二遍遍历一遍确认。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">int</span> <span class="hljs-title function_">missingNumber</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> &#123;<br>        <span class="hljs-type">int</span> i;<br><br>        sort(nums.begin(), nums.end());<br>        <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>;i &lt; nums.size();i++) &#123;<br>            <span class="hljs-keyword">if</span>(nums[i] != i) &#123;<br>                <span class="hljs-keyword">return</span> i;<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-keyword">return</span> nums.size();<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<p>题解中更快的直接用求和的高斯公式，能够根据数学的方法直接计算出缺失数字。</p>
+
                 
               </div>
             
