@@ -26,7 +26,7 @@
 <meta property="og:image" content="http://example.com/2022/11/11/LeetCode%E5%90%88%E9%9B%86/bst.png">
 <meta property="og:image" content="http://example.com/2022/11/11/LeetCode%E5%90%88%E9%9B%86/sumxor.png">
 <meta property="article:published_time" content="2022-11-11T00:25:10.000Z">
-<meta property="article:modified_time" content="2022-12-18T12:26:32.275Z">
+<meta property="article:modified_time" content="2023-03-28T06:26:56.420Z">
 <meta property="article:author" content="Jiayi Guo">
 <meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary_large_image">
@@ -239,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          27k 字
+          28k 字
         
       </span>
     
@@ -250,7 +250,7 @@
         
         
         
-          226 分钟
+          230 分钟
         
       </span>
     
@@ -445,7 +445,8 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">int</span> <span class="hljs-title function_">missingNumber</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> &#123;<br>        <span class="hljs-type">int</span> i;<br><br>        sort(nums.begin(), nums.end());<br>        <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>;i &lt; nums.size();i++) &#123;<br>            <span class="hljs-keyword">if</span>(nums[i] != i) &#123;<br>                <span class="hljs-keyword">return</span> i;<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-keyword">return</span> nums.size();<br>    &#125;<br></code></pre></td></tr></table></figure>
 
 <p>题解中更快的直接用求和的高斯公式，能够根据数学的方法直接计算出缺失数字。</p>
-
+<h2 id="LeetCode412-Fizz-Buzz"><a href="#LeetCode412-Fizz-Buzz" class="headerlink" title="LeetCode412 Fizz Buzz"></a>LeetCode412 Fizz Buzz</h2><p>题目非常简单，直接写就可以。条件可以单独写出来，更容易检查。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; <span class="hljs-title function_">fizzBuzz</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> &#123;<br>        <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; res;<br>        <span class="hljs-type">int</span> i;<br><br>        <span class="hljs-keyword">for</span>(i = <span class="hljs-number">1</span>;i &lt;= n;i++) &#123;<br>            <span class="hljs-type">bool</span> condition_1 = i % <span class="hljs-number">3</span> == <span class="hljs-number">0</span>;<br>            <span class="hljs-type">bool</span> condition_2 = i % <span class="hljs-number">5</span> == <span class="hljs-number">0</span>;<br><br>            <span class="hljs-keyword">if</span>(condition_1 &amp;&amp; condition_2) &#123;<br>                res.push_back(<span class="hljs-string">&quot;FizzBuzz&quot;</span>);<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(condition_1 &amp;&amp; !condition_2) &#123;<br>                res.push_back(<span class="hljs-string">&quot;Fizz&quot;</span>);<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(condition_2 &amp;&amp; !condition_1) &#123;<br>                res.push_back(<span class="hljs-string">&quot;Buzz&quot;</span>);<br>            &#125;<br>            <span class="hljs-keyword">else</span> &#123;<br>                res.push_back(<span class="hljs-built_in">std</span>::to_string(i));<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br></code></pre></td></tr></table></figure>
                 
               </div>
             
